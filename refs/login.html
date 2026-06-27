@@ -1,0 +1,244 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Supatechia Forum - Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Source+Sans+3:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#005234",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#002112",
+                    "secondary": "#006c46",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a2b8d1",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b3c9e2",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#a5b8ce",
+                    "outline": "#74777d",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface": "#f9f9f9",
+                    "secondary-container": "#85f9bd",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "tertiary-fixed": "#d1e4fb",
+                    "outline-variant": "#c3c7cd",
+                    "on-primary-fixed-variant": "#34495e",
+                    "on-secondary-container": "#00734b",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#34495e",
+                    "surface-container": "#eeeeee",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "on-background": "#1a1c1c",
+                    "on-primary-fixed": "#051d30",
+                    "background-alt": "#FFFFFF",
+                    "primary": "#1d3246",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#85f9bd",
+                    "on-surface-variant": "#43474c",
+                    "surface-variant": "#e2e2e2",
+                    "deep-slate": "#34495E",
+                    "surface-dim": "#dadada",
+                    "background": "#f9f9f9",
+                    "tertiary": "#203244",
+                    "surface-tint": "#4b6076",
+                    "error": "#ba1a1a",
+                    "success-emerald": "#42B983",
+                    "tertiary-container": "#37495b",
+                    "on-surface": "#1a1c1c",
+                    "primary-fixed": "#cfe5ff",
+                    "border-subtle": "#E2E8F0",
+                    "secondary-fixed-dim": "#68dca3",
+                    "surface-bright": "#f9f9f9",
+                    "primary-fixed-dim": "#b3c9e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "container-max": "1120px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "body-md": ["'Source Sans 3'"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "body-lg": ["'Source Sans 3'"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        body {
+            background-color: #F8F8F8; /* Base canvas color as per Level 0 */
+        }
+        .login-card {
+            box-shadow: 0px 4px 12px rgba(52, 73, 94, 0.05); /* Soft ambient shadow as per Level 2 */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center font-body-md text-body-md text-on-surface p-margin-mobile md:p-gutter">
+<!-- Brand Header -->
+<div class="mb-stack-lg text-center">
+<div class="flex justify-center items-center gap-stack-sm mb-unit">
+<span class="material-symbols-outlined text-primary text-[40px]">hub</span>
+<h1 class="font-headline-xl text-headline-xl text-primary">Supatechia Forum</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm">
+            Access the community hub for knowledge-centric discussions and orderly collaboration.
+        </p>
+</div>
+<!-- Login Card -->
+<main class="login-card bg-background-alt border border-border-subtle w-full max-w-[440px] rounded-lg p-stack-lg flex flex-col gap-stack-md">
+<header class="mb-unit">
+<h2 class="font-headline-md text-headline-md text-deep-slate">Welcome Back</h2>
+<p class="font-body-md text-on-surface-variant">Please enter your details to sign in.</p>
+</header>
+<!-- Form -->
+<form class="flex flex-col gap-stack-md" id="loginForm" onsubmit="return false;">
+<!-- Email Input -->
+<div class="flex flex-col gap-unit">
+<label class="font-label-md text-label-md text-deep-slate" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">mail</span>
+<input class="w-full pl-10 pr-gutter py-3 bg-background-alt border border-border-subtle rounded text-body-md focus:outline-none focus:border-success-emerald focus:ring-1 focus:ring-success-emerald transition-all placeholder:text-outline-variant" id="email" name="email" placeholder="name@company.com" required="" type="email" autocomplete="email">
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-unit">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-deep-slate" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">lock</span>
+<input class="w-full pl-10 pr-gutter py-3 bg-background-alt border border-border-subtle rounded text-body-md focus:outline-none focus:border-success-emerald focus:ring-1 focus:ring-success-emerald transition-all placeholder:text-outline-variant" id="password" name="password" placeholder="••••••••" required="" type="password" autocomplete="current-password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant hover:text-deep-slate" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me & Checkbox -->
+<div class="flex items-center gap-stack-sm py-unit">
+<input class="w-4 h-4 text-success-emerald border-border-subtle rounded focus:ring-success-emerald transition-all" id="remember" name="remember" type="checkbox">
+<label class="font-label-md text-label-md text-on-surface-variant cursor-pointer select-none" for="remember">Remember me for 30 days</label>
+</div>
+<!-- Login Button -->
+<button class="w-full bg-success-emerald hover:opacity-90 text-on-primary font-headline-md text-body-md py-3 rounded-lg transition-all active:scale-[0.98] mt-unit" type="submit">
+                Sign In
+            </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center gap-stack-sm my-unit">
+<div class="h-[1px] bg-border-subtle flex-1"></div>
+<span class="font-label-sm text-label-sm text-outline-variant">OR CONTINUE WITH</span>
+<div class="h-[1px] bg-border-subtle flex-1"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-stack-sm">
+<button class="flex items-center justify-center gap-stack-sm py-2 px-gutter border border-border-subtle bg-background-alt hover:bg-surface-container-low transition-all rounded">
+<div class="w-5 h-5 overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="A minimalist vector icon of a generic global identity provider logo, rendered in a clean flat style with neutral grey tones. The background is pure white to maintain the high-end community forum aesthetic. The lighting is uniform and soft, suggesting a professional digital interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAP8pIbXtr9UQ0dQXivO_NvVIw3JhZSI88AbwHfVlLnpC4f-Nihw534RcMrgk-K0ViLp1mUJYcOsla-rcARBcX2PiqUo27anhsdHPXUE15CLsriZ8uJ7H5cvKKBBoJAQ_6knHAi7sg1ZeF71vMKHoOfxKTm67Ce9OPkq1iXlpZW9xdvQTxvzTNlNFWyoa2y0DJS_PdbtYs-hy8MMp7_ougO7L69f12LSQabucn3Mn6PnPKdRIW0Z_V3WB_iKQYRmTIgj8HbS3XHr8">
+</div>
+<span class="font-label-md text-label-md text-deep-slate">Google</span>
+</button>
+<button class="flex items-center justify-center gap-stack-sm py-2 px-gutter border border-border-subtle bg-background-alt hover:bg-surface-container-low transition-all rounded">
+<div class="w-5 h-5 overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="A clean, professional GitHub Octocat silhouette icon rendered in a deep slate color palette. The icon is centered on a white background, mirroring the minimalism of a corporate modern design system. The lighting is flat and orderly, avoiding shadows for a fast, lightweight interface feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbn2zEQpYMPEKnDSK-oMOnWcgjuGRG2g22Ryq2H-2XDwXMrE6zjsjsntoTJJpK_UvYLwqiTdKIzN0vNUD4G7c1R68ToQvjIMnY14b5QubKqwpl02pMWSdlW1ut_jspj1EDO_XSpoE6X9Fd87VlzEI7CSmtwBlelLAX6GOwm-sIvgoXcK-RE8GCILLaair3H8ZP6xLyrlzOQMIoBehXuhDil9rNGeY_tzt4apBnkjD4gc8vAZAqN1sFAmedYBVNuH_pTDNYKjk0CKQ">
+</div>
+<span class="font-label-md text-label-md text-deep-slate">GitHub</span>
+</button>
+</div>
+<!-- Footer Link -->
+<footer class="mt-stack-md text-center">
+<p class="font-body-md text-on-surface-variant">
+                New to the community? 
+                <a class="text-secondary font-bold hover:underline" href="#">Create an account</a>
+</p>
+</footer>
+</main>
+<!-- Aesthetic Decorative Element -->
+<div class="mt-stack-lg flex gap-stack-md opacity-20 select-none pointer-events-none">
+<span class="font-label-sm text-label-sm text-outline">v2.4.0-STABLE</span>
+<span class="font-label-sm text-label-sm text-outline">© 2024 SUPATECHIA COLLECTIVE</span>
+<span class="font-label-sm text-label-sm text-outline">REFINED FOR KNOWLEDGE</span>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = loginForm.querySelector('button[type="submit"]');
+
+            loginBtn.addEventListener('click', () => {
+                const originalText = loginBtn.innerText;
+                loginBtn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span>`;
+                loginBtn.disabled = true;
+
+                // Simulate interaction delay
+                setTimeout(() => {
+                    loginBtn.innerText = originalText;
+                    loginBtn.disabled = false;
+                }, 1500);
+            });
+
+            // Toggle Password Visibility
+            const togglePassword = document.querySelector('button .material-symbols-outlined');
+            const passwordInput = document.getElementById('password');
+
+            togglePassword.parentElement.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePassword.innerText = type === 'password' ? 'visibility' : 'visibility_off';
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

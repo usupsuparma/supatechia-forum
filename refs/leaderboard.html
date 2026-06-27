@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leaderboard - Supatechia Forum</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Source+Sans+3:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#203244",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c7cd",
+                        "on-tertiary-fixed": "#091d2e",
+                        "deep-slate": "#34495E",
+                        "on-tertiary-container": "#a5b8ce",
+                        "on-surface": "#1a1c1c",
+                        "primary-fixed-dim": "#b3c9e2",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b3c9e2",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "on-primary-fixed": "#051d30",
+                        "on-surface-variant": "#43474c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005234",
+                        "secondary-fixed": "#85f9bd",
+                        "on-primary-fixed-variant": "#34495e",
+                        "outline": "#74777d",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#85f9bd",
+                        "tertiary-container": "#37495b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#68dca3",
+                        "surface": "#f9f9f9",
+                        "background-alt": "#FFFFFF",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-container": "#34495e",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "surface-tint": "#4b6076",
+                        "success-emerald": "#42B983",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary": "#1d3246",
+                        "surface-container-high": "#e8e8e8",
+                        "background": "#f9f9f9",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#cfe5ff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "secondary": "#006c46",
+                        "on-secondary-fixed": "#002112",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#a2b8d1",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#00734b",
+                        "border-subtle": "#E2E8F0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "container-max": "1120px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-md": ["\"Source Sans 3\""],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["\"Source Sans 3\""]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row">
+<!-- Top Navigation (Mobile/Tablet) -->
+<nav class="md:hidden w-full top-0 sticky z-50 bg-background border-b border-border-subtle flex justify-between items-center px-gutter py-unit h-16">
+<div class="flex items-center gap-stack-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary">Nexus Forum</span>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Side Navigation (Desktop) -->
+<nav class="hidden lg:flex flex-col gap-stack-md p-gutter bg-surface h-screen w-64 fixed left-0 top-0 overflow-y-auto border-r border-border-subtle">
+<div class="flex flex-col gap-unit mb-stack-md">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Nexus Forum</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Community Hub</p>
+</div>
+<button class="w-full bg-success-emerald text-white rounded font-label-md text-label-md py-stack-sm px-gutter hover:opacity-90 transition-opacity mb-stack-lg flex items-center justify-center gap-stack-sm">
+            Join Discussion
+        </button>
+<ul class="flex flex-col gap-unit flex-1">
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">home</span>
+                    Home
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-secondary font-bold bg-secondary-container/20 rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+                    Trending
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">schedule</span>
+                    Latest
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+                    Bookmarks
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<ul class="flex flex-col gap-unit mt-auto pt-stack-lg border-t border-border-subtle">
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm text-on-surface-variant hover:bg-surface-container rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+                    Help
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-stack-sm p-stack-sm text-on-surface-variant hover:bg-surface-container rounded-lg transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-sm">policy</span>
+                    Privacy
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg lg:ml-64">
+<!-- Header -->
+<header class="mb-stack-lg flex flex-col items-center text-center">
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary font-bold mb-stack-sm">Leaderboards</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Top Contributors in the Community</p>
+</header>
+<!-- Top 3 Podium (Bento Grid approach) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg items-end">
+<!-- Rank 2 -->
+<div class="order-2 md:order-1 bg-surface-container-lowest border border-border-subtle rounded-xl p-stack-md flex flex-col items-center text-center transform md:-translate-y-4 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest z-0 opacity-50"></div>
+<div class="w-20 h-20 rounded-full border-4 border-outline-variant overflow-hidden mb-stack-sm relative z-10">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of a diverse community member in a well-lit modern office space, wearing smart casual attire, against a soft gray background. The lighting is bright and even, conveying trust and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6B7TBUKcv06W3LqhrX_QXPSdldqVX8BtL4ueMKMeeGTZjafRh1F986hrfwiBjWu-eEfnSdpPowC0DT2esYHWlIfWoRz2Wuo3w_kdKDUhs8Wpzni62352qGL-tzm2E1YyYVtTfOWoNxjN0RKQkz6ibwh6wRcW9uvfGdu5CNZB20CjJFlvG_KbsQ5prSPHwMdC6CPwt-y8bukEXe_X3d9sp8Vz4LsvpFuDIpFqnG6jsIj5LM4OzbruB7ybtAfO5ymJtltjbrOWwItw"/>
+</div>
+<span class="font-label-sm text-label-sm bg-outline-variant text-white px-2 py-1 rounded-full absolute top-4 left-4 z-10">#2</span>
+<h3 class="font-headline-md text-headline-md text-primary z-10">Sarah J.</h3>
+<p class="font-label-md text-label-md text-success-emerald font-bold z-10">14,250 pts</p>
+<div class="mt-stack-sm flex gap-unit z-10">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm">#Vue</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-lg font-label-sm text-label-sm">1.2k posts</span>
+</div>
+</div>
+<!-- Rank 1 -->
+<div class="order-1 md:order-2 bg-surface-container-lowest border-2 border-secondary rounded-xl p-stack-lg flex flex-col items-center text-center shadow-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-secondary/10 to-transparent z-0"></div>
+<div class="w-28 h-28 rounded-full border-4 border-secondary overflow-hidden mb-stack-sm relative z-10">
+<img class="w-full h-full object-cover" data-alt="A dynamic portrait of a confident tech community leader, looking directly at the camera, situated in a bright, modern co-working environment with subtle natural light. The aesthetic is clean, professional, and optimistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ3sP8Dbs_Tn_iKsONLUmKDbVuv5OGxqI_UBSPQF2ZA1qeuuZE8JBr95D3ipNdpdKltzqJ32pVzYumSgm4gso73m8ZSSu8zg3lH6l7wCCw_QoiPQHy60AoEaTyx5uOBZdPi4nS9FfTG9yOkEAtXdVgOIhJaojXR_-xd_3DmJFUwWcFu5N08yCI4yp3TYhW5YWUfE9FfMMNwYOETkig8NlwfAp1YKyJkDdOQj61nHUGQHf4ySrdZvfUVad7mTWd9R3qV7k9Q0KwDpo"/>
+</div>
+<span class="material-symbols-outlined absolute top-4 right-4 text-secondary text-3xl z-10">workspace_premium</span>
+<span class="font-label-md text-label-md bg-secondary text-white px-3 py-1 rounded-full absolute top-4 left-4 z-10">#1</span>
+<h3 class="font-headline-lg-mobile md:text-headline-lg text-primary z-10 mt-unit">Alex Chen</h3>
+<p class="font-headline-md text-headline-md text-success-emerald font-bold z-10">18,900 pts</p>
+<div class="mt-stack-sm flex gap-unit z-10">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm">#React</span>
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm">#Architecture</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-lg font-label-sm text-label-sm">2.4k posts</span>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="order-3 bg-surface-container-lowest border border-border-subtle rounded-xl p-stack-md flex flex-col items-center text-center transform md:-translate-y-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-lowest z-0 opacity-50"></div>
+<div class="w-16 h-16 rounded-full border-4 border-[#CD7F32] overflow-hidden mb-stack-sm relative z-10">
+<img class="w-full h-full object-cover" data-alt="A crisp, high-quality avatar image of an engaged forum user, softly lit with cool tones, set against a minimalist white background. The image reflects a structured, modern corporate identity suitable for a high-density knowledge platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmnvgzP9DEtCk6R9AjThcW21Tk21UvCcrdXo_djXw-kQt6xht8O_gq7-XTggky9ljtRGxE_XEujphIXlY8nE2WYyDwt6ZKyIgn5BLPdnu2dO7TbDBLh1dGufWLKxxu4RkpEWfJiPgyHL0Ky5dwOBHVFkBvWDfkwLvaLN5g2As9wMa68tW7B0XcvqDWc9e4POxSx1mQLC-Gej6gPMHFTXqBBNG3-lYxg4jO-3WgwxLX3yzKDGXoRUSDo4tN1yEM-NAMohEbIbLeBSU"/>
+</div>
+<span class="font-label-sm text-label-sm bg-[#CD7F32] text-white px-2 py-1 rounded-full absolute top-4 left-4 z-10">#3</span>
+<h3 class="font-headline-md text-headline-md text-primary z-10">Mike T.</h3>
+<p class="font-label-md text-label-md text-success-emerald font-bold z-10">12,100 pts</p>
+<div class="mt-stack-sm flex gap-unit z-10">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm">#DevOps</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-lg font-label-sm text-label-sm">900 posts</span>
+</div>
+</div>
+</section>
+<!-- Ranked List Table -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="py-stack-sm px-gutter font-label-sm text-label-sm text-on-surface-variant w-16 text-center">Rank</th>
+<th class="py-stack-sm px-gutter font-label-sm text-label-sm text-on-surface-variant">User</th>
+<th class="py-stack-sm px-gutter font-label-sm text-label-sm text-on-surface-variant hidden md:table-cell">Top Expertise</th>
+<th class="py-stack-sm px-gutter font-label-sm text-label-sm text-on-surface-variant text-right">Score</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Row 4 -->
+<tr class="border-b border-border-subtle hover:bg-surface transition-colors group cursor-pointer">
+<td class="py-stack-sm px-gutter text-center font-label-md text-label-md text-on-surface-variant">4</td>
+<td class="py-stack-sm px-gutter">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist portrait of a professional developer, neutrally lit, reflecting a serious and focused demeanor, appropriate for a technical forum environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgbDPE9XofFd7QI7XH6sCpjzLZ0HjTXg8Ztg-MSGZMgYBXe0rYHaEmzlRgq-PWXjjVkW07frzqZFSdT9YJ6Mx1fNbzEBVDij62JQs5t1EPlUglleNyNLrIbgjTYe_djlqz1L6B-MTA2Lhtp8ILM_r0wn6_ggXRit-sFyk2tNvJaURsLMqqfSTi8MDaPC3o7namM5EmqNw0rVhz6gBtk4cM_4h7bnUJF7bk9PIa8J430lyCfDqoGgWEPiSEQB7LZ3X2dAc0cDzOhe4"/>
+</div>
+<div>
+<div class="font-headline-md text-base md:text-lg text-primary group-hover:text-secondary transition-colors">Elena R.</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant md:hidden">#UI/UX</div>
+</div>
+</div>
+</td>
+<td class="py-stack-sm px-gutter hidden md:table-cell">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm inline-block">#UI/UX</span>
+</td>
+<td class="py-stack-sm px-gutter text-right font-label-md text-label-md text-success-emerald">11,540</td>
+</tr>
+<!-- Row 5 -->
+<tr class="border-b border-border-subtle hover:bg-surface transition-colors group cursor-pointer">
+<td class="py-stack-sm px-gutter text-center font-label-md text-label-md text-on-surface-variant">5</td>
+<td class="py-stack-sm px-gutter">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold">
+                                        DW
+                                    </div>
+<div>
+<div class="font-headline-md text-base md:text-lg text-primary group-hover:text-secondary transition-colors">David W.</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant md:hidden">#Python</div>
+</div>
+</div>
+</td>
+<td class="py-stack-sm px-gutter hidden md:table-cell">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm inline-block">#Python</span>
+</td>
+<td class="py-stack-sm px-gutter text-right font-label-md text-label-md text-success-emerald">10,200</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface transition-colors group cursor-pointer">
+<td class="py-stack-sm px-gutter text-center font-label-md text-label-md text-on-surface-variant">6</td>
+<td class="py-stack-sm px-gutter">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold">
+                                        KS
+                                    </div>
+<div>
+<div class="font-headline-md text-base md:text-lg text-primary group-hover:text-secondary transition-colors">Kim S.</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant md:hidden">#Security</div>
+</div>
+</div>
+</td>
+<td class="py-stack-sm px-gutter hidden md:table-cell">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-lg font-label-sm text-label-sm inline-block">#Security</span>
+</td>
+<td class="py-stack-sm px-gutter text-right font-label-md text-label-md text-success-emerald">9,850</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-stack-sm border-t border-border-subtle flex justify-center bg-surface-container-low">
+<button class="px-gutter py-2 text-deep-slate border border-deep-slate rounded hover:bg-surface-variant transition-colors font-label-md text-label-md">
+                    Load More
+                </button>
+</div>
+</section>
+</main>
+</body></html>

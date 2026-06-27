@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Thread - Nexus Forum</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#203244",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c7cd",
+                        "on-tertiary-fixed": "#091d2e",
+                        "deep-slate": "#34495E",
+                        "on-tertiary-container": "#a5b8ce",
+                        "on-surface": "#1a1c1c",
+                        "primary-fixed-dim": "#b3c9e2",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b3c9e2",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "on-primary-fixed": "#051d30",
+                        "on-surface-variant": "#43474c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005234",
+                        "secondary-fixed": "#85f9bd",
+                        "on-primary-fixed-variant": "#34495e",
+                        "outline": "#74777d",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#85f9bd",
+                        "tertiary-container": "#37495b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#68dca3",
+                        "surface": "#f9f9f9",
+                        "background-alt": "#FFFFFF",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-container": "#34495e",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "surface-tint": "#4b6076",
+                        "success-emerald": "#42B983",
+                        "surface-container-highest": "#e2e2e2",
+                        "primary": "#1d3246",
+                        "surface-container-high": "#e8e8e8",
+                        "background": "#f9f9f9",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#cfe5ff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadada",
+                        "secondary": "#006c46",
+                        "on-secondary-fixed": "#002112",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#a2b8d1",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#00734b",
+                        "border-subtle": "#E2E8F0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "container-max": "1120px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-md": ["\"Source Sans 3\""],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["\"Source Sans 3\""]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8F8F8;
+            color: #1a1c1c;
+        }
+        .prose-editor {
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-background dark:bg-on-background border-b border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-unit h-16">
+<div class="flex items-center gap-stack-md">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed" href="#">Nexus Forum</a>
+<!-- Search (on left as per JSON) -->
+<div class="hidden md:flex relative ml-stack-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-label-md" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-border-subtle rounded-DEFAULT text-body-md focus:border-success-emerald focus:ring-1 focus:ring-success-emerald transition-colors w-64 placeholder-outline" placeholder="Search discussions..." type="text"/>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-stack-md font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer active:opacity-80" href="#">Discussions</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer active:opacity-80" href="#">Categories</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors cursor-pointer active:opacity-80" href="#">Members</a>
+</nav>
+<div class="flex items-center gap-stack-md">
+<a class="hidden sm:block px-4 py-2 bg-success-emerald text-white font-label-md text-label-md rounded-DEFAULT hover:bg-opacity-90 transition-colors" href="#">Create Thread</a>
+<button aria-label="notifications" class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="mail" class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-border-subtle object-cover cursor-pointer" data-alt="A small, circular avatar image of a user profile. The image shows a generic, modern, minimal portrait or abstract graphic suitable for a corporate modern forum, rendered in a light-mode aesthetic with soft lighting and clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnFZNejhoNLZ6iEdH5tlEQ3YjYCE1IdMweTl6zt40I33bM2Q_jVxxMzdahQVRdt3iFaU-Vg05a2l_LhB_-ZLHTkdUv05b2bHkguOgGCo_jb7A8VLtF0G6mujJLMW3qDzrEPFdyQnuLgn2ulkWrzR--6ZngUOen_X41O3EVxi5WjW7-gePLTSRtyoAYNqAuZa33vWDTYT1wpUVF4k1U-lj-aRYCsmFTtRFuGMpd9sPS5WVwasdVnksihG-YwJOGws1D6I7kRU5Kn-I"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 max-w-container-max mx-auto w-full">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col gap-stack-md p-gutter h-[calc(100vh-4rem)] w-64 fixed left-0 top-16 overflow-y-auto border-r border-border-subtle dark:border-outline-variant bg-surface dark:bg-surface-container-low flat no shadows">
+<!-- Header area in sidenav is omitted here to avoid duplication with TopBar, but standard tabs follow -->
+<nav class="flex-col gap-unit flex-1 w-full mt-stack-md">
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span> Home
+                </a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span> Trending
+                </a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span> Latest
+                </a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span> Bookmarks
+                </a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+                </a>
+</nav>
+<div class="mt-auto">
+<div class="border-t border-border-subtle pt-stack-md flex flex-col gap-unit">
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span> Help
+                    </a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span> Privacy
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-margin-mobile md:p-gutter pt-stack-lg max-w-[800px] w-full">
+<div class="mb-stack-lg">
+<h1 class="font-headline-xl text-headline-xl md:text-headline-xl text-primary mb-2">Create New Thread</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Start a new discussion. Be descriptive and follow community guidelines.</p>
+</div>
+<form class="bg-surface-container-lowest border border-border-subtle rounded-xl p-gutter shadow-sm">
+<!-- Title Input -->
+<div class="mb-stack-md">
+<label class="block font-label-md text-label-md text-primary mb-unit" for="thread-title">Title</label>
+<input class="w-full p-3 bg-surface-container-lowest border border-border-subtle rounded-DEFAULT text-body-lg focus:border-success-emerald focus:ring-1 focus:ring-success-emerald transition-colors placeholder-outline" id="thread-title" placeholder="What's on your mind?" type="text"/>
+</div>
+<!-- Category Input -->
+<div class="mb-stack-md">
+<label class="block font-label-md text-label-md text-primary mb-unit" for="thread-category">Category</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-label-md" data-icon="sell">sell</span>
+<input class="w-full pl-10 pr-3 py-3 bg-surface-container-lowest border border-border-subtle rounded-DEFAULT text-body-md focus:border-success-emerald focus:ring-1 focus:ring-success-emerald transition-colors placeholder-outline" id="thread-category" placeholder="e.g., Q&amp;A, Announcements, Development" type="text"/>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-1">Separate tags with commas.</p>
+</div>
+<!-- Body Textarea / Rich Text Placeholder -->
+<div class="mb-stack-lg border border-border-subtle rounded-DEFAULT overflow-hidden">
+<!-- Toolbar Mockup -->
+<div class="bg-surface-container-low border-b border-border-subtle p-2 flex gap-2 items-center flex-wrap">
+<button aria-label="Bold" class="p-1 text-on-surface-variant hover:bg-surface-variant rounded transition-colors" type="button"><span class="material-symbols-outlined text-label-md" data-icon="format_bold">format_bold</span></button>
+<button aria-label="Italic" class="p-1 text-on-surface-variant hover:bg-surface-variant rounded transition-colors" type="button"><span class="material-symbols-outlined text-label-md" data-icon="format_italic">format_italic</span></button>
+<div class="w-px h-4 bg-border-subtle mx-1"></div>
+<button aria-label="Link" class="p-1 text-on-surface-variant hover:bg-surface-variant rounded transition-colors" type="button"><span class="material-symbols-outlined text-label-md" data-icon="link">link</span></button>
+<button aria-label="Quote" class="p-1 text-on-surface-variant hover:bg-surface-variant rounded transition-colors" type="button"><span class="material-symbols-outlined text-label-md" data-icon="format_quote">format_quote</span></button>
+<button aria-label="Code" class="p-1 text-on-surface-variant hover:bg-surface-variant rounded transition-colors" type="button"><span class="material-symbols-outlined text-label-md" data-icon="code">code</span></button>
+<div class="w-px h-4 bg-border-subtle mx-1"></div>
+<button aria-label="List" class="p-1 text-on-surface-variant hover:bg-surface-variant rounded transition-colors" type="button"><span class="material-symbols-outlined text-label-md" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+</div>
+<!-- Editor Area -->
+<textarea class="w-full p-4 bg-surface-container-lowest border-none resize-y prose-editor text-body-md focus:ring-0 placeholder-outline" placeholder="Write your post content here..."></textarea>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-stack-md pt-stack-sm border-t border-border-subtle">
+<button class="px-6 py-2 border border-deep-slate text-deep-slate font-label-md text-label-md rounded-DEFAULT hover:bg-surface-variant transition-colors" type="button">Cancel</button>
+<button class="px-6 py-2 bg-success-emerald text-white font-label-md text-label-md rounded-DEFAULT hover:bg-opacity-90 transition-colors shadow-sm" type="submit">Post Thread</button>
+</div>
+</form>
+</main>
+</div>
+</body></html>

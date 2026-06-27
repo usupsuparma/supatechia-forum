@@ -1,0 +1,442 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nexus Forum | Thread Detail</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Source+Sans+3:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#005234",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#002112",
+                    "secondary": "#006c46",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a2b8d1",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b3c9e2",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#a5b8ce",
+                    "outline": "#74777d",
+                    "surface-container-low": "#f3f3f3",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface": "#f9f9f9",
+                    "secondary-container": "#85f9bd",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "tertiary-fixed": "#d1e4fb",
+                    "outline-variant": "#c3c7cd",
+                    "on-primary-fixed-variant": "#34495e",
+                    "on-secondary-container": "#00734b",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#34495e",
+                    "surface-container": "#eeeeee",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "on-background": "#1a1c1c",
+                    "on-primary-fixed": "#051d30",
+                    "background-alt": "#FFFFFF",
+                    "primary": "#1d3246",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-tertiary-fixed": "#091d2e",
+                    "secondary-fixed": "#85f9bd",
+                    "on-surface-variant": "#43474c",
+                    "surface-variant": "#e2e2e2",
+                    "deep-slate": "#34495E",
+                    "surface-dim": "#dadada",
+                    "background": "#f9f9f9",
+                    "tertiary": "#203244",
+                    "surface-tint": "#4b6076",
+                    "error": "#ba1a1a",
+                    "success-emerald": "#42B983",
+                    "tertiary-container": "#37495b",
+                    "on-surface": "#1a1c1c",
+                    "primary-fixed": "#cfe5ff",
+                    "border-subtle": "#E2E8F0",
+                    "secondary-fixed-dim": "#68dca3",
+                    "surface-bright": "#f9f9f9",
+                    "primary-fixed-dim": "#b3c9e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "container-max": "1120px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "body-md": ["\"Source Sans 3\""],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "body-lg": ["\"Source Sans 3\""]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f8f8;
+            color: #1a1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .comment-thread-line {
+            width: 2px;
+            background-color: #E2E8F0;
+            margin-left: 12px;
+            margin-right: 20px;
+        }
+        .hover-card:hover {
+            box-shadow: 0px 4px 12px rgba(52, 73, 94, 0.05);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-background border-b border-border-subtle h-16 flex items-center">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter w-full">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-md text-headline-md font-bold text-primary">Supatechia Forum</span>
+<nav class="hidden md:flex gap-stack-md items-center">
+<a class="font-body-md text-body-md text-secondary border-b-2 border-secondary pb-1 cursor-pointer active:opacity-80" href="#">Discussions</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80" href="#">Categories</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:opacity-80" href="#">Members</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 18px;">search</span>
+<input class="bg-background-alt border border-border-subtle rounded-lg pl-10 pr-4 py-1.5 focus:border-success-emerald focus:ring-0 text-sm w-64 transition-all" placeholder="Search threads..." type="text">
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:text-secondary transition-all">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:text-secondary transition-all">mail</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle ml-2">
+<img class="w-full h-full object-cover" data-alt="Close up profile photo of a professional user in a modern office environment. Soft natural window lighting, shallow depth of field with a blurred contemporary background of plants and monitors. High quality, sharp detail, clean corporate photography aesthetic matching the Nexus Forum brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7nUP3ED6lHxMEgvRjhv6YnOoAZOt6l6MRauZDTwqrzAqw2N3Svoj1bOTHgYV-MDCxTMxm7kEBuHPSkngiqzQcXq9lgcSLr6alkH3XNKJQAVVlnOcnjDt_OdqhMkmAh8nKEkHFAqkrFi0SCt7qi3armcgnvWKW5zYikMJ9ICwKt-0slzK-OEGTm4RQ2YGV1mCsDLe8f2De1Yy1pYMaJ65HIUDRnompODicnyTM2QYYhaKGsMwxUJLezqIaUpzj3_71Ykfid8-M6FA">
+</div>
+</div>
+<button class="bg-success-emerald text-on-primary px-4 py-2 rounded font-medium text-sm transition-all hover:opacity-90">Create Thread</button>
+</div>
+</div>
+</header>
+<div class="max-w-container-max mx-auto flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 sticky top-16 hidden lg:flex flex-col gap-stack-md p-gutter border-r border-border-subtle bg-surface">
+<div class="mb-stack-md">
+<div class="flex items-center gap-stack-sm mb-unit">
+<span class="font-headline-md text-headline-md text-primary">Supatechia Forum</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Community Hub</p>
+</div>
+<nav class="flex flex-col gap-unit">
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-secondary font-bold bg-secondary-container/20 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-md text-label-md">Trending</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">schedule</span>
+<span class="font-label-md text-label-md">Latest</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md text-label-md">Bookmarks</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm mb-unit text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border-subtle pt-stack-md">
+<button class="w-full bg-secondary text-on-secondary py-2 rounded-lg font-medium text-sm mb-stack-md hover:opacity-90">Join Discussion</button>
+<div class="flex flex-col gap-unit">
+<a class="flex items-center gap-stack-sm p-stack-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="flex items-center gap-stack-sm p-stack-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+<span class="font-label-md text-label-md">Privacy</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-gutter max-w-full">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-stack-sm mb-stack-lg text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<a class="hover:text-secondary" href="#">Discussions</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-secondary" href="#">Development</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Thread Detail</span>
+</div>
+<!-- Thread Detail Card -->
+<article class="bg-background-alt border border-border-subtle p-stack-lg rounded-lg mb-stack-lg">
+<header class="mb-stack-md">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<span class="bg-secondary-container/30 text-secondary px-2 py-0.5 rounded-lg text-label-sm font-label-sm">#Architecture</span>
+<span class="bg-tertiary-fixed text-primary px-2 py-0.5 rounded-lg text-label-sm font-label-sm">#Advanced-Dev</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-stack-sm">Future-Proofing Scalable Microservices: A Deep Dive into Event Mesh Patterns</h1>
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="Portrait of a software architect in a high-tech minimalist studio. Dramatic side lighting highlights sharp features and professional attire. The background is a clean white and emerald green aesthetic with subtle digital UI overlays. Professional high-end photography for a community leadership profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASDW7z3aJ3lV8pEEl1w76GqPTCToG9FqkrKOICr0yxG83Ku-d3g8jlBdcQSVKbxJuQf3Ifpm9LTZde3ifP7Jyx9sQT3zIN6QABwKzda_nsozVpL5EjeseMuGqTCvQo_-F21k9368yU_YW9Jx2U4weUXaFIzEb9Fm1K-Sz3pz5qbRJ9ferf_z38hl9itW1wrwdaigAIrPAVKDTJXcAAXO4NY7RKHRn3lt8Q2f7TkfYfCEBsNh7FXvTmGJma5Ixt3rXZuWkFBRQeoPM">
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">Marcus Chen</p>
+<p class="font-label-sm text-label-sm font-jetbrainsMono">Senior Architect • 2 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-unit text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" style="font-size: 20px;">thumb_up</span>
+<span class="font-label-sm text-label-sm">124</span>
+</button>
+<button class="flex items-center gap-unit text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" style="font-size: 20px;">bookmark</span>
+<span class="font-label-sm text-label-sm">Save</span>
+</button>
+<button class="flex items-center gap-unit text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" style="font-size: 20px;">share</span>
+<span class="font-label-sm text-label-sm">Share</span>
+</button>
+</div>
+</div>
+</header>
+<div class="font-body-lg text-body-lg text-on-surface leading-relaxed space-y-stack-md mb-stack-lg">
+<p class="">When we talk about scalability in modern distributed systems, we often focus on the horizontal scaling of individual containers. However, the true bottleneck frequently lies in the communication fabric between these services. Traditional point-to-point APIs create a "spaghetti" of dependencies that can halt evolution.</p>
+<p class="">Enter the <strong>Event Mesh</strong>. Unlike a standard message broker, an event mesh is a dynamic infrastructure layer that distributes events across any environment, whether on-prem or multi-cloud. By decoupling the producer from the consumer entirely, we enable a level of agility that monolithic architectures simply cannot match.</p>
+<blockquote class="border-l-4 border-success-emerald bg-surface p-stack-md font-body-md text-on-surface-variant italic">
+                        "The goal isn't just to send messages, but to create a ubiquitous nervous system for your enterprise data."
+                    </blockquote>
+<p class="">In this thread, I want to explore how we've implemented this at Supatechia Hub, particularly focusing on the dynamic routing and filtering capabilities that allow services to subscribe only to the granular data they need. What are your thoughts on using Mesh over a central Bus for high-throughput IoT scenarios?</p>
+</div>
+<div class="flex flex-wrap gap-stack-sm pt-stack-md border-t border-border-subtle">
+<span class="text-on-surface-variant font-label-sm text-label-sm mr-2">Tags:</span>
+<span class="text-secondary hover:underline cursor-pointer font-label-sm text-label-sm">#Microservices</span>
+<span class="text-secondary hover:underline cursor-pointer font-label-sm text-label-sm">#EventMesh</span>
+<span class="text-secondary hover:underline cursor-pointer font-label-sm text-label-sm">#ArchitecturePatterns</span>
+<span class="text-secondary hover:underline cursor-pointer font-label-sm text-label-sm">#Scalability</span>
+</div>
+</article>
+<!-- Comments Section -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-primary">Replies (18)</h3>
+<div class="flex items-center gap-stack-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none focus:ring-0 font-label-sm text-label-sm text-secondary cursor-pointer">
+<option>Best</option>
+<option>Newest</option>
+<option>Oldest</option>
+</select>
+</div>
+</div>
+<!-- Post Comment Area -->
+<div class="bg-background-alt border border-border-subtle p-stack-md rounded-lg mb-stack-lg focus-within:border-success-emerald transition-all">
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-0 mb-stack-sm font-body-md text-body-md min-h-[100px] resize-none" placeholder="Write a thoughtful reply..."></textarea>
+<div class="flex justify-between items-center pt-stack-sm border-t border-border-subtle">
+<div class="flex items-center gap-stack-sm text-on-surface-variant">
+<button class="material-symbols-outlined p-1 hover:text-secondary transition-all">format_bold</button>
+<button class="material-symbols-outlined p-1 hover:text-secondary transition-all">format_italic</button>
+<button class="material-symbols-outlined p-1 hover:text-secondary transition-all">link</button>
+<button class="material-symbols-outlined p-1 hover:text-secondary transition-all">image</button>
+<button class="material-symbols-outlined p-1 hover:text-secondary transition-all">code</button>
+</div>
+<button class="bg-success-emerald text-on-primary px-6 py-2 rounded font-medium text-sm hover:opacity-90 transition-all">Post Comment</button>
+</div>
+</div>
+<!-- Comment List -->
+<div class="space-y-stack-md">
+<!-- Comment 1 -->
+<div class="flex">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-subtle mb-2">
+<img class="w-full h-full object-cover" data-alt="Close up avatar of a young female software developer. High contrast studio lighting with hints of mint green and navy blue. Professional, intelligent expression, sharp focus on eyes, clean background. Corporate modern style for tech forum profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcnwmHJka_rWsFTPdLX2kDyU66dAjCGmjVi5KKI0l9V9yOfU4U4cUQb6oE5Ylgeh_7PAW9YrhAf1DYmDuMQ3jGTnr3WRmvd4oAD45V2hXwNmfsPV_1yoqFcJXu-4-_lS6t9f9af9XOBGqKgbmndwos2IuL63ZUHyBESDQFkbMA5RWgth56LhbxK_VxVdRlyJfVzy0rFcjt_0pSSQ2xboWIERCNOlA4PgjEOTHIB2DlsI92j7R2W_Ih7XXthS3TgbLtPQmaMhP5B0k">
+</div>
+<div class="flex-1 comment-thread-line"></div>
+</div>
+<div class="flex-1 bg-background-alt border border-border-subtle p-stack-md rounded-lg ml-stack-sm">
+<div class="flex items-center justify-between mb-unit">
+<span class="font-label-md text-label-md font-bold text-primary">Sarah Jenkins <span class="font-normal text-on-surface-variant text-label-sm font-jetbrainsMono ml-2">• 1h ago</span></span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" style="font-size: 18px;">more_horiz</button>
+</div>
+<p class="text-body-md text-on-surface mb-stack-sm leading-relaxed">The decoupling aspect is key. We recently moved from RabbitMQ to a full Solace mesh and the observability gains alone were worth the migration cost. Being able to visualize the flow of events across continents is a game changer.</p>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-unit text-on-surface-variant hover:text-secondary transition-all text-label-sm font-label-sm">
+<span class="material-symbols-outlined" style="font-size: 18px;">thumb_up</span>
+<span class="">24</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-all text-label-sm font-label-sm font-medium">Reply</button>
+</div>
+</div>
+</div>
+<!-- Nested Reply -->
+<div class="flex ml-12">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle mb-2">
+<img class="w-full h-full object-cover" data-alt="Portrait of a senior developer in a workspace with warm artificial lighting. The background features blurred code on screens and book-filled shelves. Professional, thoughtful expression, high-quality photography, clean and intellectual atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOuZgttx6qS2izui1eIvaQBdJ4PZ2EEv7CTLLir6IOWhWhlD1HfLiQDkRs7ZYVbTLUgCjmKJtdduQKKYIeBrYY0AuLQ9xpOz0854X3lvqYhgUY-gUqc2izvUWP0am4tL8n1P2GuhMv63g4ZwZnLXHbO736_gZMn3ESzR1vKqRaGFpyqGxDACMhmOLs-oM3rYMJecb1M8tS5y_yUxETtDvxNasvOVWB8KRvlyJCKpM1uRH79gYlSVkI12piEJSPLsiLvBHNLZ4lRuM">
+</div>
+<div class="flex-1 comment-thread-line"></div>
+</div>
+<div class="flex-1 bg-surface-container-low border border-border-subtle p-stack-md rounded-lg ml-stack-sm">
+<div class="flex items-center justify-between mb-unit">
+<span class="font-label-md text-label-md font-bold text-primary">Dave Thompson <span class="font-normal text-on-surface-variant text-label-sm font-jetbrainsMono ml-2">• 45m ago</span></span>
+</div>
+<p class="text-body-md text-on-surface mb-stack-sm leading-relaxed">@Sarah Did you face any latency issues with the cross-region event distribution during peak hours? We are considering a similar move.</p>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-unit text-on-surface-variant hover:text-secondary transition-all text-label-sm font-label-sm">
+<span class="material-symbols-outlined" style="font-size: 18px;">thumb_up</span>
+<span class="">8</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-all text-label-sm font-label-sm font-medium">Reply</button>
+</div>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="flex">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-subtle mb-2">
+<img class="w-full h-full object-cover" data-alt="Modern studio portrait of a data scientist with a creative and analytical vibe. Minimalist aesthetics, soft teal and grey tones, natural soft light. Focus is sharp on the face with a blurred architectural background. Highly professional and welcoming feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw1qc4KcVyBbPoxsdenzCs4PRKGCU0PSc8q0M6TS8FxiKWk9vOTRdHOe3qYPKHpVt3Wc9vgFN-91-QAMJyg9-6CLm_spDzLzyUWzWVhekEJ1bXx2grzphEcVZYztdyhgx_3i9LnVIrXGcU5pqlQpwcBQjlej9zhAR8o88GKIomZUbFCruYT20dL1FwHpTeyEXYkmqgAdSFN9S9jCbcSA03ud-VxMpVBTU_xAwsE4Y3tEqr-jibsXo7W0Gku5B0koni3psh9XjRyeY">
+</div>
+<div class="flex-1 opacity-0"></div>
+</div>
+<div class="flex-1 bg-background-alt border border-border-subtle p-stack-md rounded-lg ml-stack-sm">
+<div class="flex items-center justify-between mb-unit">
+<span class="font-label-md text-label-md font-bold text-primary">Liam Zhang <span class="font-normal text-on-surface-variant text-label-sm font-jetbrainsMono ml-2">• 15m ago</span></span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" style="font-size: 18px;">more_horiz</button>
+</div>
+<p class="text-body-md text-on-surface mb-stack-sm leading-relaxed">Great post Marcus! I think the dynamic filtering you mentioned is often overlooked. In high-density environments, sending everything to everyone is just asking for a network meltdown. Looking forward to your next deep dive on schema registries.</p>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-unit text-on-surface-variant hover:text-secondary transition-all text-label-sm font-label-sm">
+<span class="material-symbols-outlined" style="font-size: 18px;">thumb_up</span>
+<span class="">12</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-all text-label-sm font-label-sm font-medium">Reply</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Sidebar (Bento Style) -->
+<aside class="hidden xl:block w-80 p-gutter">
+<div class="flex flex-col gap-stack-md sticky top-24">
+<!-- Community Stats -->
+<div class="bg-background-alt border border-border-subtle p-stack-md rounded-lg">
+<h4 class="font-label-md text-label-md font-bold text-primary mb-stack-sm">About the Author</h4>
+<div class="flex flex-col gap-stack-sm">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Threads</span>
+<span class="text-primary font-bold font-jetbrainsMono text-label-sm">342</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Kudos</span>
+<span class="text-success-emerald font-bold font-jetbrainsMono text-label-sm">4.8k</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-label-sm font-label-sm">Joined</span>
+<span class="text-primary font-bold font-jetbrainsMono text-label-sm">Oct 2021</span>
+</div>
+</div>
+</div>
+<!-- Featured Topics Card -->
+<div class="bg-primary text-on-primary p-stack-md rounded-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md mb-unit">Supatechia Forum</h4>
+<p class="text-label-sm font-label-sm text-on-primary-container mb-stack-sm">Join us next Thursday for a session on Kubernetes best practices.</p>
+<button class="bg-success-emerald text-on-primary text-label-sm font-label-sm py-1.5 px-3 rounded-lg hover:opacity-90 transition-all">Remind Me</button>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-success-emerald opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-all"></div>
+</div>
+<!-- Trending Today -->
+<div class="bg-background-alt border border-border-subtle p-stack-md rounded-lg">
+<h4 class="font-label-md text-label-md font-bold text-primary mb-stack-md">Trending in Architecture</h4>
+<div class="space-y-stack-sm">
+<a class="block group" href="#">
+<p class="text-body-md text-on-surface-variant group-hover:text-secondary transition-colors line-clamp-2">Is monolithic architecture making a comeback in 2024?</p>
+<span class="text-label-sm font-label-sm font-jetbrainsMono opacity-50">42 comments</span>
+</a>
+<a class="block group" href="#">
+<p class="text-body-md text-on-surface-variant group-hover:text-secondary transition-colors line-clamp-2">Choosing between gRPC and GraphQL for internal tooling.</p>
+<span class="text-label-sm font-label-sm font-jetbrainsMono opacity-50">18 comments</span>
+</a>
+<a class="block group" href="#">
+<p class="text-body-md text-on-surface-variant group-hover:text-secondary transition-colors line-clamp-2">The hidden costs of serverless functions at scale.</p>
+<span class="text-label-sm font-label-sm font-jetbrainsMono opacity-50">56 comments</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Floating Mobile Action (FAB) - Suppressed on Details per instructions, but kept as a subtle context logic example if needed elsewhere. For this page we adhere to the mandate: "You MUST suppress the FAB on Settings, Profile, Details, and Transactional screens." -->
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.98)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'scale(1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-2', 'ring-success-emerald/20');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-2', 'ring-success-emerald/20');
+            });
+        }
+    </script>
+
+
+</body></html>
