@@ -1,122 +1,106 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import type { ReactNode } from 'react';
+import Loading from './components/Loading';
+import { preloadAuth } from './states/authSlice';
+import { useAppDispatch, useAppSelector } from './states/hooks';
+import CreateThreadPage from './pages/CreateThreadPage';
+import DashboardPage from './pages/DashboardPage';
+import LeaderboardPage from './pages/LeaderboardPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ThreadDetailPage from './pages/ThreadDetailPage';
 
-function App() {
-  const [count, setCount] = useState(0)
+type RouteGuardProps = {
+  children: ReactNode;
+};
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+function ProtectedRoute({ children }: RouteGuardProps) {
+  const authUser = useAppSelector((state) => state.auth.user);
+  const location = useLocation();
 
-      <div className="ticks"></div>
+  if (!authUser) {
+    return <Navigate replace state={{ from: `${location.pathname}${location.search}` }} to="/login" />;
+  }
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+  return children;
 }
 
-export default App
+function PublicRoute({ children }: RouteGuardProps) {
+  const authUser = useAppSelector((state) => state.auth.user);
+
+  if (authUser) {
+    return <Navigate replace to="/" />;
+  }
+
+  return children;
+}
+
+function App() {
+  const dispatch = useAppDispatch();
+  const initialized = useAppSelector((state) => state.auth.initialized);
+
+  useEffect(() => {
+    void dispatch(preloadAuth());
+  }, [dispatch]);
+
+  if (!initialized) {
+    return <Loading />;
+  }
+
+  return (
+    <Routes>
+      <Route
+        element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+        path="/"
+      />
+      <Route
+        element={
+          <ProtectedRoute>
+            <CreateThreadPage />
+          </ProtectedRoute>
+        }
+        path="/threads/new"
+      />
+      <Route
+        element={
+          <ProtectedRoute>
+            <ThreadDetailPage />
+          </ProtectedRoute>
+        }
+        path="/threads/:threadId"
+      />
+      <Route
+        element={
+          <ProtectedRoute>
+            <LeaderboardPage />
+          </ProtectedRoute>
+        }
+        path="/leaderboard"
+      />
+      <Route
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+        path="/login"
+      />
+      <Route
+        element={
+          <PublicRoute>
+            <RegisterPage />
+          </PublicRoute>
+        }
+        path="/register"
+      />
+      <Route element={<Navigate replace to="/" />} path="*" />
+    </Routes>
+  );
+}
+
+export default App;
