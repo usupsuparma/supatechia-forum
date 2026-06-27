@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import MaterialIcon from './MaterialIcon';
 import { scoreFromVotes } from '../utils';
 import type { VoteType } from '../types/forum';
@@ -61,4 +62,4 @@ function VoteControls({
   );
 }
 
-export default VoteControls;
+export default memo(VoteControls);

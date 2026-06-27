@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type LoadingProps = {
   label?: string;
 };
@@ -13,4 +15,4 @@ function Loading({ label = 'Loading Supatechia Forum...' }: LoadingProps) {
   );
 }
 
-export default Loading;
+export default memo(Loading);

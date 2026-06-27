@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import AppShell from '../components/AppShell';
@@ -74,13 +74,13 @@ function DashboardPage() {
     setSortMode(event.target.value as SortMode);
   }
 
-  function handleVote(threadId: string, voteType: VoteType, previousVoteType: VoteType) {
-    if (!authUser) {
+  const handleVote = useCallback((threadId: string, voteType: VoteType, previousVoteType: VoteType) => {
+    if (!authUser?.id) {
       return;
     }
 
     void dispatch(voteThread({ threadId, voteType, previousVoteType, userId: authUser.id }));
-  }
+  }, [authUser, dispatch]);
 
   return (
     <AppShell active="home" searchValue={searchQuery} onSearchChange={setSearchQuery}>

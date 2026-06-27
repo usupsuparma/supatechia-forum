@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import AppShell from '../components/AppShell';
 import Avatar from '../components/Avatar';
+import CommentCard from '../components/CommentCard';
 import Loading from '../components/Loading';
 import MaterialIcon from '../components/MaterialIcon';
 import VoteControls from '../components/VoteControls';
@@ -35,21 +36,17 @@ function ThreadDetailPage() {
     };
   }, [dispatch, threadId]);
 
-  if (!threadId) {
-    return <Navigate replace to="/" />;
-  }
-
-  function handleThreadVote(voteType: VoteType, previousVoteType: VoteType) {
-    if (detailThread && authUser) {
+  const handleThreadVote = useCallback((voteType: VoteType, previousVoteType: VoteType) => {
+    if (detailThread?.id && authUser?.id) {
       void dispatch(voteThread({ threadId: detailThread.id, voteType, previousVoteType, userId: authUser.id }));
     }
-  }
+  }, [authUser, detailThread, dispatch]);
 
-  function handleCommentVote(commentId: string, voteType: VoteType, previousVoteType: VoteType) {
-    if (detailThread && authUser) {
+  const handleCommentVote = useCallback((commentId: string, voteType: VoteType, previousVoteType: VoteType) => {
+    if (detailThread?.id && authUser?.id) {
       void dispatch(voteComment({ threadId: detailThread.id, commentId, voteType, previousVoteType, userId: authUser.id }));
     }
-  }
+  }, [authUser, detailThread, dispatch]);
 
   async function handleSubmitComment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -65,6 +62,10 @@ function ThreadDetailPage() {
     } catch (requestError) {
       setLocalError(getErrorMessage(requestError, 'Unable to post comment'));
     }
+  }
+
+  if (!threadId) {
+    return <Navigate replace to="/" />;
   }
 
   return (
@@ -131,24 +132,12 @@ function ThreadDetailPage() {
 
               <div className="comment-list">
                 {detailThread.comments.map((comment) => (
-                  <article className="comment-card" key={comment.id}>
-                    <Avatar name={comment.owner.name} src={comment.owner.avatar} size="md" />
-                    <div className="comment-card__body">
-                      <header>
-                        <strong>{comment.owner.name}</strong>
-                        <span>{postedAt(comment.createdAt)}</span>
-                      </header>
-                      <div className="prose prose--comment" dangerouslySetInnerHTML={{ __html: sanitizeHtml(comment.content) }} />
-                      <VoteControls
-                        upVotesBy={comment.upVotesBy}
-                        downVotesBy={comment.downVotesBy}
-                        authUserId={authUser?.id}
-                        onVote={(voteType, previousVoteType) => handleCommentVote(comment.id, voteType, previousVoteType)}
-                        orientation="horizontal"
-                        compact
-                      />
-                    </div>
-                  </article>
+                  <CommentCard
+                    authUserId={authUser?.id}
+                    comment={comment}
+                    key={comment.id}
+                    onVote={handleCommentVote}
+                  />
                 ))}
               </div>
             </section>

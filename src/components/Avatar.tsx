@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { initials } from '../utils';
 
 type AvatarProps = {
@@ -20,4 +21,4 @@ function Avatar({ name, src, size = 'md' }: AvatarProps) {
   );
 }
 
-export default Avatar;
+export default memo(Avatar);

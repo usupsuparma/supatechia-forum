@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 type MaterialIconProps = {
   name: string;
   className?: string;
@@ -11,4 +13,4 @@ function MaterialIcon({ name, className = '' }: MaterialIconProps) {
   );
 }
 
-export default MaterialIcon;
+export default memo(MaterialIcon);

@@ -1,3 +1,4 @@
+import { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from './Avatar';
 import MaterialIcon from './MaterialIcon';
@@ -15,6 +16,12 @@ function ThreadCard({ thread, authUserId, onVote }: ThreadCardProps) {
   const ownerName = thread.owner?.name ?? 'Supatechia Member';
   const ownerAvatar = thread.owner?.avatar;
   const bodyPreview = stripHtml(thread.body);
+  const handleVote = useCallback(
+    (voteType: VoteType, previousVoteType: VoteType) => {
+      onVote(thread.id, voteType, previousVoteType);
+    },
+    [onVote, thread.id],
+  );
 
   return (
     <article className="thread-card">
@@ -22,7 +29,7 @@ function ThreadCard({ thread, authUserId, onVote }: ThreadCardProps) {
         upVotesBy={thread.upVotesBy}
         downVotesBy={thread.downVotesBy}
         authUserId={authUserId}
-        onVote={(voteType, previousVoteType) => onVote(thread.id, voteType, previousVoteType)}
+        onVote={handleVote}
       />
 
       <div className="thread-card__content">
@@ -54,4 +61,4 @@ function ThreadCard({ thread, authUserId, onVote }: ThreadCardProps) {
   );
 }
 
-export default ThreadCard;
+export default memo(ThreadCard);
