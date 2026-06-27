@@ -6,8 +6,10 @@ import { preloadAuth } from './states/authSlice';
 import { useAppDispatch, useAppSelector } from './states/hooks';
 import CreateThreadPage from './pages/CreateThreadPage';
 import DashboardPage from './pages/DashboardPage';
+import HelpPage from './pages/HelpPage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import LoginPage from './pages/LoginPage';
+import PrivacyPage from './pages/PrivacyPage';
 import RegisterPage from './pages/RegisterPage';
 import ThreadDetailPage from './pages/ThreadDetailPage';
 
@@ -81,6 +83,22 @@ function App() {
           </ProtectedRoute>
         }
         path="/leaderboard"
+      />
+      <Route
+        element={
+          <ProtectedRoute>
+            <HelpPage />
+          </ProtectedRoute>
+        }
+        path="/help"
+      />
+      <Route
+        element={
+          <ProtectedRoute>
+            <PrivacyPage />
+          </ProtectedRoute>
+        }
+        path="/privacy"
       />
       <Route
         element={

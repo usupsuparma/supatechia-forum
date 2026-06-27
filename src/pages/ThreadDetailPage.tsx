@@ -39,15 +39,15 @@ function ThreadDetailPage() {
     return <Navigate replace to="/" />;
   }
 
-  function handleThreadVote(voteType: VoteType) {
-    if (detailThread) {
-      void dispatch(voteThread({ threadId: detailThread.id, voteType }));
+  function handleThreadVote(voteType: VoteType, previousVoteType: VoteType) {
+    if (detailThread && authUser) {
+      void dispatch(voteThread({ threadId: detailThread.id, voteType, previousVoteType, userId: authUser.id }));
     }
   }
 
-  function handleCommentVote(commentId: string, voteType: VoteType) {
-    if (detailThread) {
-      void dispatch(voteComment({ threadId: detailThread.id, commentId, voteType }));
+  function handleCommentVote(commentId: string, voteType: VoteType, previousVoteType: VoteType) {
+    if (detailThread && authUser) {
+      void dispatch(voteComment({ threadId: detailThread.id, commentId, voteType, previousVoteType, userId: authUser.id }));
     }
   }
 
@@ -143,7 +143,7 @@ function ThreadDetailPage() {
                         upVotesBy={comment.upVotesBy}
                         downVotesBy={comment.downVotesBy}
                         authUserId={authUser?.id}
-                        onVote={(voteType) => handleCommentVote(comment.id, voteType)}
+                        onVote={(voteType, previousVoteType) => handleCommentVote(comment.id, voteType, previousVoteType)}
                         orientation="horizontal"
                         compact
                       />

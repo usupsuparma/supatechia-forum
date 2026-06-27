@@ -6,7 +6,7 @@ type VoteControlsProps = {
   upVotesBy: string[];
   downVotesBy: string[];
   authUserId?: string;
-  onVote: (voteType: VoteType) => void;
+  onVote: (voteType: VoteType, previousVoteType: VoteType) => void;
   orientation?: 'vertical' | 'horizontal';
   compact?: boolean;
 };
@@ -29,7 +29,7 @@ function VoteControls({
   const score = scoreFromVotes(upVotesBy, downVotesBy);
 
   function handleVote(voteType: VoteType) {
-    onVote(currentVote === voteType ? 0 : voteType);
+    onVote(currentVote === voteType ? 0 : voteType, currentVote);
   }
 
   return (

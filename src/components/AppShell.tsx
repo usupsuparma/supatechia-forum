@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../states/hooks';
 
 type AppShellProps = {
   children: ReactNode;
-  active?: 'home' | 'leaderboard' | 'create' | 'detail';
+  active?: 'home' | 'leaderboard' | 'create' | 'detail' | 'help' | 'privacy';
   searchValue?: string;
   onSearchChange?: (value: string) => void;
 };
@@ -105,14 +105,14 @@ function AppShell({ children, active = 'home', searchValue, onSearchChange }: Ap
           </nav>
 
           <div className="sidebar__footer">
-            <Link className="sidebar__link" to="/">
+            <NavLink className={({ isActive }) => `sidebar__link ${isActive || active === 'help' ? 'is-active' : ''}`} to="/help">
               <MaterialIcon name="help_outline" />
               <span>Help</span>
-            </Link>
-            <Link className="sidebar__link" to="/">
+            </NavLink>
+            <NavLink className={({ isActive }) => `sidebar__link ${isActive || active === 'privacy' ? 'is-active' : ''}`} to="/privacy">
               <MaterialIcon name="policy" />
               <span>Privacy</span>
-            </Link>
+            </NavLink>
           </div>
         </aside>
 

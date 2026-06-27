@@ -74,8 +74,12 @@ function DashboardPage() {
     setSortMode(event.target.value as SortMode);
   }
 
-  function handleVote(threadId: string, voteType: VoteType) {
-    void dispatch(voteThread({ threadId, voteType }));
+  function handleVote(threadId: string, voteType: VoteType, previousVoteType: VoteType) {
+    if (!authUser) {
+      return;
+    }
+
+    void dispatch(voteThread({ threadId, voteType, previousVoteType, userId: authUser.id }));
   }
 
   return (

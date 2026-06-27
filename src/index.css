@@ -1316,6 +1316,109 @@ h3 {
   color: var(--primary);
 }
 
+.info-page {
+  display: grid;
+  gap: 24px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.info-grid--privacy {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.info-card,
+.info-panel,
+.privacy-hero {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.info-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 20px;
+}
+
+.info-card__icon,
+.privacy-hero > div:first-child {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: var(--radius);
+  color: #ffffff;
+  background: var(--primary);
+}
+
+.info-card h2,
+.info-panel h2,
+.privacy-hero h2 {
+  font-size: 22px;
+}
+
+.info-card p,
+.info-panel p,
+.privacy-hero p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.info-panel {
+  padding: 24px;
+}
+
+.info-panel h2 {
+  margin-bottom: 14px;
+}
+
+.timeline-list {
+  display: grid;
+  gap: 12px;
+}
+
+.timeline-list div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.timeline-list div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.timeline-list span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--secondary);
+  background: var(--secondary-soft);
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.privacy-hero {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+}
+
 @media (max-width: 1080px) {
   .dashboard__grid,
   .detail-layout {
@@ -1359,6 +1462,11 @@ h3 {
   }
 
   .podium-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid,
+  .info-grid--privacy {
     grid-template-columns: 1fr;
   }
 
@@ -1448,6 +1556,11 @@ h3 {
   .form-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .privacy-hero {
+    align-items: flex-start;
+    grid-template-columns: 1fr;
   }
 
   .leaderboard-table {

@@ -8,7 +8,7 @@ import type { ThreadWithOwner, VoteType } from '../types/forum';
 type ThreadCardProps = {
   thread: ThreadWithOwner;
   authUserId?: string;
-  onVote: (threadId: string, voteType: VoteType) => void;
+  onVote: (threadId: string, voteType: VoteType, previousVoteType: VoteType) => void;
 };
 
 function ThreadCard({ thread, authUserId, onVote }: ThreadCardProps) {
@@ -22,7 +22,7 @@ function ThreadCard({ thread, authUserId, onVote }: ThreadCardProps) {
         upVotesBy={thread.upVotesBy}
         downVotesBy={thread.downVotesBy}
         authUserId={authUserId}
-        onVote={(voteType) => onVote(thread.id, voteType)}
+        onVote={(voteType, previousVoteType) => onVote(thread.id, voteType, previousVoteType)}
       />
 
       <div className="thread-card__content">

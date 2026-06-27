@@ -29,6 +29,17 @@ type ForumState = {
   error: string | null;
 };
 
+type ThreadVotePayload = {
+  threadId: string;
+  userId: string;
+  voteType: VoteType;
+  previousVoteType: VoteType;
+};
+
+type CommentVotePayload = ThreadVotePayload & {
+  commentId: string;
+};
+
 const initialState: ForumState = {
   users: [],
   threads: [],
@@ -56,6 +67,26 @@ function setVote(target: Votable, userId: string, voteType: VoteType) {
 
 function getVoteType(vote: Vote, fallback: VoteType) {
   return vote.voteType === 1 || vote.voteType === -1 || vote.voteType === 0 ? vote.voteType : fallback;
+}
+
+function applyThreadVote(state: ForumState, threadId: string, userId: string, voteType: VoteType) {
+  const thread = state.threads.find((item) => item.id === threadId);
+
+  if (thread) {
+    setVote(thread, userId, voteType);
+  }
+
+  if (state.detailThread?.id === threadId) {
+    setVote(state.detailThread, userId, voteType);
+  }
+}
+
+function applyCommentVote(state: ForumState, commentId: string, userId: string, voteType: VoteType) {
+  const comment = state.detailThread?.comments.find((item) => item.id === commentId);
+
+  if (comment) {
+    setVote(comment, userId, voteType);
+  }
 }
 
 export const fetchHomeData = createAsyncThunk('forum/fetchHomeData', async () => {
@@ -90,25 +121,17 @@ export const addComment = createAsyncThunk(
 
 export const voteThread = createAsyncThunk(
   'forum/voteThread',
-  async ({ threadId, voteType }: { threadId: string; voteType: VoteType }) => {
+  async ({ threadId, voteType, userId }: ThreadVotePayload) => {
     const vote = await api.voteThread(threadId, voteType);
-    return { threadId, userId: vote.userId, voteType: getVoteType(vote, voteType) };
+    return { threadId, userId: vote.userId || userId, voteType: getVoteType(vote, voteType) };
   },
 );
 
 export const voteComment = createAsyncThunk(
   'forum/voteComment',
-  async ({
-    threadId,
-    commentId,
-    voteType,
-  }: {
-    threadId: string;
-    commentId: string;
-    voteType: VoteType;
-  }) => {
+  async ({ threadId, commentId, voteType, userId }: CommentVotePayload) => {
     const vote = await api.voteComment(threadId, commentId, voteType);
-    return { threadId, commentId, userId: vote.userId, voteType: getVoteType(vote, voteType) };
+    return { threadId, commentId, userId: vote.userId || userId, voteType: getVoteType(vote, voteType) };
   },
 );
 
@@ -194,30 +217,32 @@ const forumSlice = createSlice({
         state.mutationStatus = 'failed';
         state.error = action.error.message ?? 'Failed to add comment';
       })
+      .addCase(voteThread.pending, (state, action) => {
+        const { threadId, userId, voteType } = action.meta.arg;
+        state.error = null;
+        applyThreadVote(state, threadId, userId, voteType);
+      })
       .addCase(voteThread.fulfilled, (state, action) => {
         const { threadId, userId, voteType } = action.payload;
-        const thread = state.threads.find((item) => item.id === threadId);
-
-        if (thread) {
-          setVote(thread, userId, voteType);
-        }
-
-        if (state.detailThread?.id === threadId) {
-          setVote(state.detailThread, userId, voteType);
-        }
+        applyThreadVote(state, threadId, userId, voteType);
       })
       .addCase(voteThread.rejected, (state, action) => {
+        const { threadId, userId, previousVoteType } = action.meta.arg;
+        applyThreadVote(state, threadId, userId, previousVoteType);
         state.error = action.error.message ?? 'Failed to vote thread';
+      })
+      .addCase(voteComment.pending, (state, action) => {
+        const { commentId, userId, voteType } = action.meta.arg;
+        state.error = null;
+        applyCommentVote(state, commentId, userId, voteType);
       })
       .addCase(voteComment.fulfilled, (state, action) => {
         const { commentId, userId, voteType } = action.payload;
-        const comment = state.detailThread?.comments.find((item) => item.id === commentId);
-
-        if (comment) {
-          setVote(comment, userId, voteType);
-        }
+        applyCommentVote(state, commentId, userId, voteType);
       })
       .addCase(voteComment.rejected, (state, action) => {
+        const { commentId, userId, previousVoteType } = action.meta.arg;
+        applyCommentVote(state, commentId, userId, previousVoteType);
         state.error = action.error.message ?? 'Failed to vote comment';
       });
   },
