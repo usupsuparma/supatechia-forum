@@ -36,7 +36,6 @@ export const preloadAuth = createAsyncThunk('auth/preload', async () => {
 export const loginUser = createAsyncThunk('auth/login', async (payload: LoginPayload) => {
   const token = await api.login(payload);
   api.putAccessToken(token);
-
   return api.getOwnProfile();
 });
 
