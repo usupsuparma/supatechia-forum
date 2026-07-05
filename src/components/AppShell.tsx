@@ -113,6 +113,7 @@ function AppShell({ children, active = 'home', searchValue, onSearchChange }: Ap
               <MaterialIcon name="policy" />
               <span>Privacy</span>
             </NavLink>
+            <p className="sidebar__version">v{__APP_VERSION__}</p>
           </div>
         </aside>
 
