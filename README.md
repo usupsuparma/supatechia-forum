@@ -1,3 +1,35 @@
+# Supatechia Forum
+
+Aplikasi forum diskusi berbasis React, Redux Toolkit, dan Vite.
+
+## Submission Checklist
+
+- Unit/reducer/thunk/component test dijalankan dengan `npm test`.
+- End-to-end login test dijalankan dengan `npm run e2e`.
+- Storybook tersedia sebagai React ecosystem tambahan dengan `npm run storybook`.
+- Build aplikasi dijalankan dengan `npm run build`.
+- GitHub Actions CI tersedia di `.github/workflows/ci.yml`.
+- Konfigurasi SPA deployment Vercel tersedia di `vercel.json`.
+- Catatan URL Vercel dan screenshot CI/CD dapat dilengkapi di `submission-notes.md`.
+
+## Automation Testing
+
+Project ini memiliki pengujian reducer, thunk, React component, dan E2E login. Setiap file pengujian memuat komentar `Skenario pengujian` sesuai kriteria submission.
+
+```bash
+npm test
+npm run e2e
+```
+
+## React Ecosystem
+
+Project ini memakai Storybook (`storybook` dan `@storybook/react-vite`) sebagai React Development Tool dari daftar Awesome React Ecosystem. Story tersedia untuk `VoteControls` dan `ThreadCard`.
+
+```bash
+npm run storybook
+npm run build-storybook
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

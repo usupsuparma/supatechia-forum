@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM"],
+    "types": ["cypress"],
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["e2e/**/*.cy.ts"]
+}

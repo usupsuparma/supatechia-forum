@@ -7,7 +7,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import dicodingAcademy from 'eslint-config-dicodingacademy'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'coverage', 'storybook-static', 'cypress/screenshots', 'cypress/videos']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -21,6 +21,23 @@ export default defineConfig([
     },
     rules: {
       ...dicodingAcademy.rules,
+    },
+  },
+  {
+    files: ['cypress/**/*.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+        cy: 'readonly',
+        Cypress: 'readonly',
+      },
+    },
+  },
+  {
+    files: ['.storybook/**/*.ts'],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 ])
