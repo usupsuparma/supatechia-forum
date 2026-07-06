@@ -46,10 +46,17 @@ function AppShell({ children, active = 'home', searchValue, onSearchChange }: Ap
           </div>
 
           <nav className="topbar__links" aria-label="Primary navigation">
-            <NavLink className={({ isActive }) => `topbar__link ${isActive ? 'is-active' : ''}`} to="/" end>
+            <NavLink
+              className={({ isActive }) => `topbar__link ${isActive ? 'is-active' : ''}`}
+              to="/"
+              end
+            >
               Discussions
             </NavLink>
-            <NavLink className={({ isActive }) => `topbar__link ${isActive ? 'is-active' : ''}`} to="/leaderboard">
+            <NavLink
+              className={({ isActive }) => `topbar__link ${isActive ? 'is-active' : ''}`}
+              to="/leaderboard"
+            >
               Members
             </NavLink>
           </nav>
@@ -59,14 +66,25 @@ function AppShell({ children, active = 'home', searchValue, onSearchChange }: Ap
               <MaterialIcon name="add" />
               <span>Create Thread</span>
             </Link>
-            <button className="icon-button" type="button" title="Notifications" aria-label="Notifications">
+            <button
+              className="icon-button"
+              type="button"
+              title="Notifications"
+              aria-label="Notifications"
+            >
               <MaterialIcon name="notifications" />
             </button>
             <button className="icon-button" type="button" title="Messages" aria-label="Messages">
               <MaterialIcon name="mail" />
             </button>
             {authUser && <Avatar name={authUser.name} src={authUser.avatar} size="sm" />}
-            <button className="icon-button" type="button" title="Sign out" aria-label="Sign out" onClick={handleLogout}>
+            <button
+              className="icon-button"
+              type="button"
+              title="Sign out"
+              aria-label="Sign out"
+              onClick={handleLogout}
+            >
               <MaterialIcon name="logout" />
             </button>
           </div>
@@ -86,15 +104,29 @@ function AppShell({ children, active = 'home', searchValue, onSearchChange }: Ap
           </div>
 
           <nav className="sidebar__nav">
-            <NavLink className={({ isActive }) => `sidebar__link ${isActive || active === 'home' ? 'is-active' : ''}`} to="/" end>
+            <NavLink
+              className={({ isActive }) =>
+                `sidebar__link ${isActive || active === 'home' ? 'is-active' : ''}`
+              }
+              to="/"
+              end
+            >
               <MaterialIcon name="home" />
               <span>Home</span>
             </NavLink>
-            <NavLink className={({ isActive }) => `sidebar__link ${isActive || active === 'leaderboard' ? 'is-active' : ''}`} to="/leaderboard">
+            <NavLink
+              className={({ isActive }) =>
+                `sidebar__link ${isActive || active === 'leaderboard' ? 'is-active' : ''}`
+              }
+              to="/leaderboard"
+            >
               <MaterialIcon name="leaderboard" />
               <span>Leaderboard</span>
             </NavLink>
-            <Link className={`sidebar__link ${active === 'create' ? 'is-active' : ''}`} to="/threads/new">
+            <Link
+              className={`sidebar__link ${active === 'create' ? 'is-active' : ''}`}
+              to="/threads/new"
+            >
               <MaterialIcon name="edit_square" />
               <span>New Thread</span>
             </Link>
@@ -105,11 +137,21 @@ function AppShell({ children, active = 'home', searchValue, onSearchChange }: Ap
           </nav>
 
           <div className="sidebar__footer">
-            <NavLink className={({ isActive }) => `sidebar__link ${isActive || active === 'help' ? 'is-active' : ''}`} to="/help">
+            <NavLink
+              className={({ isActive }) =>
+                `sidebar__link ${isActive || active === 'help' ? 'is-active' : ''}`
+              }
+              to="/help"
+            >
               <MaterialIcon name="help_outline" />
               <span>Help</span>
             </NavLink>
-            <NavLink className={({ isActive }) => `sidebar__link ${isActive || active === 'privacy' ? 'is-active' : ''}`} to="/privacy">
+            <NavLink
+              className={({ isActive }) =>
+                `sidebar__link ${isActive || active === 'privacy' ? 'is-active' : ''}`
+              }
+              to="/privacy"
+            >
               <MaterialIcon name="policy" />
               <span>Privacy</span>
             </NavLink>
